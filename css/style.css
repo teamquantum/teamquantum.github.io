@@ -28,7 +28,7 @@ Main Components
 -------------------------------- */
 .cd-schedule {
   position: relative;
-  margin: 2em 0;
+  margin: 5em 0;
 }
 
 .cd-schedule::before {
@@ -334,7 +334,7 @@ Main Components
 .cd-schedule .event-modal {
   position: fixed;
   z-index: 3;
-  top: 0;
+  top: 10%;
   right: 0;
   height: 100%;
   width: 100%;
@@ -394,7 +394,7 @@ Main Components
 .cd-schedule .event-modal .header-bg, .cd-schedule .event-modal .body-bg {
   /* these are the morphing backgrounds - visible on desktop only */
   position: absolute;
-  top: 0;
+  top: 0px;
   left: 0;
   height: 100%;
   width: 100%;
