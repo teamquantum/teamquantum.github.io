@@ -10,11 +10,13 @@ Primary style
 main {
   font-size: 82.5%;
   font-family: "Source Sans Pro", sans-serif;
+  overflow-x: scroll;
 }
 
 body {
   color: #222222;
   background-color: white;
+  display: flex;
 }
 
 a {
