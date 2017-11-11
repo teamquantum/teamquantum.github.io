@@ -4,13 +4,13 @@ jQuery(document).ready(function($){
 	//if browser does not support transitions - use a different event to trigger them
 	if( !transitionsSupported ) transitionEnd = 'noTransition';
 	
-	//should add a loding while the events are organized 
 
 	function SchedulePlan( element ) {
 		this.element = element;
 		this.timeline = this.element.find('.timeline');
 		this.timelineItems = this.timeline.find('li');
 		this.timelineItemsNumber = this.timelineItems.length;
+		this.eventSlotWidth = this.timelineItems.eq(0).outerWidth();
 		this.timelineStart = getScheduleTimestamp(this.timelineItems.eq(0).text());
 		//need to store delta (in our case half hour) timestamp
 		this.timelineUnitDuration = getScheduleTimestamp(this.timelineItems.eq(1).text()) - getScheduleTimestamp(this.timelineItems.eq(0).text());
@@ -19,6 +19,7 @@ jQuery(document).ready(function($){
 		this.eventsGroup = this.eventsWrapper.find('.events-group');
 		this.singleEvents = this.eventsGroup.find('.single-event');
 		this.eventSlotHeight = this.eventsGroup.eq(0).children('.top-info').outerHeight();
+		/*this.eventSlotWidth = this.eventsGroup.eq(0).children('.top-info').outerHeight();*/
 
 		this.modal = this.element.find('.event-modal');
 		this.modalHeader = this.modal.find('.header');
@@ -44,13 +45,34 @@ jQuery(document).ready(function($){
 			//in this case you are on a desktop version (first load or resize from mobile)
 			this.eventSlotHeight = this.eventsGroup.eq(0).children('.top-info').outerHeight();
 			this.element.addClass('js-full');
+			this.eventsGroup.children('ul').add(this.singleEvents).removeAttr('style');
+			this.eventsWrapper.children('.grid-line').remove();
+			this.placeEvents();
+			this.element.hasClass('modal-is-open') && this.checkEventModal();
+		} else if(  mq == 'desktop' && this.element.hasClass('js-full') ) {
+			this.eventSlotHeight = this.eventsGroup.eq(0).children('.top-info').outerHeight();
+			this.element.removeClass('js-full loading');
+			this.eventsGroup.children('ul').add(this.singleEvents).removeAttr('style');
+			this.eventsWrapper.children('.grid-line').remove();
 			this.placeEvents();
 			this.element.hasClass('modal-is-open') && this.checkEventModal();
 		} else if(  mq == 'mobile' && this.element.hasClass('js-full') ) {
 			//in this case you are on a mobile version (first load or resize from desktop)
+		        this.eventSlotWidth = this.timelineItems.eq(0).outerWidth();
+			/*this.eventSlotWidth = this.eventsGroup.eq(0).children('.top-info').outerHeight();*/
 			this.element.removeClass('js-full loading');
 			this.eventsGroup.children('ul').add(this.singleEvents).removeAttr('style');
 			this.eventsWrapper.children('.grid-line').remove();
+			this.placeEventsHor();
+			this.element.hasClass('modal-is-open') && this.checkEventModal();
+		} else if(  mq == 'mobile' && !this.element.hasClass('js-full') ) {
+			//in this case you are on a mobile version (first load or resize from desktop)
+		        this.eventSlotWidth = this.timelineItems.eq(0).outerWidth();
+			/*this.eventSlotWidth = this.eventsGroup.eq(0).children('.top-info').outerHeight();*/
+			this.element.addClass('js-full');
+			this.eventsGroup.children('ul').add(this.singleEvents).removeAttr('style');
+			this.eventsWrapper.children('.grid-line').remove();
+			this.placeEventsHor();
 			this.element.hasClass('modal-is-open') && this.checkEventModal();
 		} else if( mq == 'desktop' && this.element.hasClass('modal-is-open')){
 			//on a mobile version with modal open - need to resize/move modal window
@@ -99,6 +121,27 @@ jQuery(document).ready(function($){
 			$(this).css({
 				top: (eventTop - 8) +'px',
 				height: (eventHeight+1)+'px'
+			});
+		});
+
+		this.element.removeClass('loading');
+	};
+
+	SchedulePlan.prototype.placeEventsHor = function() {
+		var self = this;
+		this.singleEvents.each(function(){
+			//place each event in the grid horizontally -> need to set left position and height
+			var start = getScheduleTimestamp($(this).attr('data-start')),
+				duration = getScheduleTimestamp($(this).attr('data-end')) - start;
+
+			var eventLeft = self.eventSlotWidth*(start - self.timelineStart)/self.timelineUnitDuration,
+				eventWidth = self.eventSlotWidth*duration/self.timelineUnitDuration;
+			
+			
+			$(this).css({
+				left: (eventLeft + 40) +'px',
+				width: (eventWidth+1)+'px',
+                                height: 70+'px'
 			});
 		});
 
