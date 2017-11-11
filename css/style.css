@@ -11,12 +11,15 @@ main {
   font-size: 82.5%;
   font-family: "Source Sans Pro", sans-serif;
   overflow-x: scroll;
+  height: 100% !important;
 }
 
 body {
   color: #222222;
   background-color: white;
   display: flex;
+  overflow-x: hidden;
+  height: 100vh;
 }
 
 a {
