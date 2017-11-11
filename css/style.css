@@ -29,7 +29,6 @@ Main Components
 -------------------------------- */
 .cd-schedule {
   position: relative;
-  margin: 5em 0;
 }
 
 .cd-schedule::before {
@@ -55,10 +54,67 @@ Main Components
 }
 
 .cd-schedule .timeline {
-  display: none;
+    display: block;
+    position: relative;
+    top: 0;
+    left: 30px;
+    height: 100%;
+    width: 100%;
+    float: left;
+    padding-top: 20px;
+}
+
+
+.cd-schedule .timeline ul {
+    width: 100%;
+}
+
+
+.cd-schedule .timeline > ul {
+  position: relative;
+  padding: 0 5%;
+  /* force its children to stay on one line */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-overflow-scrolling: touch;
+}
+
+.cd-schedule .timeline li {
+  /* force them to stay on one line */
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  float: left;
+  height: 30px;
+  width: 70%;
+  max-width: 300px;
+  font-weight: bold;
+}
+
+.cd-schedule .timeline li::after {
+    /* this is used to create the table vertical lines */
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    height: 100%;
+    background: #EAEAEA;
+}
+
+@media only screen and (min-width: 550px) {
+  .cd-schedule .timeline li {
+    width: 40%;
+  }
 }
 
 @media only screen and (min-width: 800px) {
+  .cd-schedule .timeline {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
   .cd-schedule .timeline {
     display: block;
     position: absolute;
@@ -67,10 +123,19 @@ Main Components
     height: 100%;
     width: 100%;
     padding-top: 50px;
+    margin: 5em 0;
   }
   .cd-schedule .timeline li {
     position: relative;
-    height: 50px;
+    height: 70px;
+    float: none;
+    font-weight: normal;
+  }
+  .cd-schedule .timeline > ul {
+    position: relative;
+    padding: 0;
+    display: block;
+    overflow-x: visible;
   }
   .cd-schedule .timeline li::after {
     /* this is used to create the table horizontal lines */
@@ -109,6 +174,7 @@ Main Components
 .cd-schedule .events {
   position: relative;
   z-index: 1;
+  padding-top: 50px;
 }
 
 .cd-schedule .events .events-group {
@@ -153,7 +219,7 @@ Main Components
   -ms-flex-negative: 0;
       flex-shrink: 0;
   float: left;
-  height: 70px;
+  height: 100px;
   width: 70%;
   max-width: 300px;
   box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.2);
@@ -197,7 +263,7 @@ Main Components
   .cd-schedule .events .top-info {
     /* vertically center its content */
     display: table;
-    height: 50px;
+    height: 70px;
     border-bottom: 1px solid #EAEAEA;
     /* reset style */
     padding: 0;
@@ -296,25 +362,6 @@ Main Components
   margin-bottom: .2em;
 }
 
-.cd-schedule .event-name-popup {
-  font-size: 1.6rem;
-}
-
-@media only screen and (min-width: 800px) {
-  .cd-schedule .event-name-popup {
-    font-size: 1.6rem;
-  }
-}
-
-
-.cd-schedule .event-date-popup {
-  /* they are not included in the the HTML but added using JavScript */
-  font-size: 2.0rem;
-  opacity: .7;
-  line-height: 1.2;
-  margin-bottom: .2em;
-}
-
 .cd-schedule .single-event[data-event="event-1"],
 .cd-schedule [data-event="event-1"] .header-bg {
   /* this is used to set a background color for the event and the modal window */
@@ -359,6 +406,42 @@ Main Components
 
 .cd-schedule .single-event[data-event="event-5"]:hover {
   background: #f7bd7f;
+}
+
+.cd-schedule .single-event[data-event="event-14"],
+.cd-schedule [data-event="event-14"] .header-bg {
+  background: #00cc99;
+}
+
+.cd-schedule .single-event[data-event="event-14"]:hover {
+  background: #00e6ac;
+}
+
+.cd-schedule .single-event[data-event="event-15"],
+.cd-schedule [data-event="event-15"] .header-bg {
+  background: #660033;
+}
+
+.cd-schedule .single-event[data-event="event-15"]:hover {
+  background: #800040;
+}
+
+.cd-schedule .single-event[data-event="event-16"],
+.cd-schedule [data-event="event-16"] .header-bg {
+  background: #666699;
+}
+
+.cd-schedule .single-event[data-event="event-16"]:hover {
+  background: #7575a3;
+}
+
+.cd-schedule .single-event[data-event="event-17"],
+.cd-schedule [data-event="event-17"] .header-bg {
+  background: #ffcc99;
+}
+
+.cd-schedule .single-event[data-event="event-17"]:hover {
+  background: #ffd9b3;
 }
 
 .cd-schedule .single-event[data-event="event-19"],
