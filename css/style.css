@@ -204,6 +204,14 @@ Main Components
   padding-top: 20px;
 }
 
+.position-fixed-x {
+  position: relative; 
+}
+
+.position-fixed-y {
+  position: relative;
+}
+
 .cd-schedule .events .events-group > ul {
   position: relative;
   padding: 0 5%;

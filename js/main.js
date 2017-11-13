@@ -32,6 +32,14 @@ jQuery(document).ready(function($){
 		this.animating = false;
 
 		this.initSchedule();
+
+		$("main").scroll(function () {
+		  var $w = $("main");
+		  $('.position-fixed-x').css('left', $w.scrollLeft());
+		  $('.position-fixed-y').css('top', $w.scrollTop());
+
+		});
+
 	}
 
 	SchedulePlan.prototype.initSchedule = function() {
