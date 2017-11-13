@@ -18,8 +18,10 @@ main {
 body {
   color: #222222;
   background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
   height: 100vh;
 }
 
