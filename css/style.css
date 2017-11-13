@@ -12,6 +12,7 @@ main {
   font-family: "Source Sans Pro", sans-serif;
   overflow-x: scroll;
   height: 100% !important;
+  width: 100% !important;
 }
 
 body {
@@ -258,9 +259,10 @@ Main Components
   .cd-schedule .events {
     float: left;
     width: 100%;
+
   }
   .cd-schedule .events .events-group {
-    width: 20%;
+    width: 150px;
     float: left;
     border: 1px solid #EAEAEA;
     /* reset style */
@@ -276,6 +278,11 @@ Main Components
     border-bottom: 1px solid #EAEAEA;
     /* reset style */
     padding: 0;
+    /* force its children to stay on one line */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-overflow-scrolling: touch;
   }
   .cd-schedule .events .top-info > span {
     /* vertically center inside its parent */
@@ -286,6 +293,9 @@ Main Components
     /* reset style */
     font-weight: normal;
     margin-bottom: 0;
+    /* force them to stay on one line */
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
   }
   .cd-schedule .events .events-group > ul {
     height: 950px;
@@ -293,6 +303,7 @@ Main Components
     display: block;
     overflow: visible;
     padding: 0;
+
   }
   .cd-schedule .events .events-group > ul::after {
     clear: both;
