@@ -126,19 +126,25 @@ jQuery(document).ready(function($){
 			});
 
 			$('.position-fixed-x').css('left', 0);
+			$('.position-fixed-x').css('top', 0);
+			$('.position-fixed-y').css('left', 0);
 			$('.position-fixed-y').css('top', 0);
-			$('.position-fixed-y').css('background-color', 'transparent');
-			$('.position-fixed-y').css('color', 'black');
+			$('.position-fixed-y').children('ul').children('li').css('background-color', 'transparent');
+			$('.position-fixed-y').children('ul').children('li').css('color', 'black');
+			$('.position-fixed-x').css('background-color', '#343a40');
+			$('.position-fixed-x').css('color', 'white');
 
 			//create scrolling for desktop
 			$(window).scroll(function () {
 			  var $w = $(window);
+			  $('.position-fixed-y').css('left', $w.scrollLeft());
 			  $('.position-fixed-x').css('top', $w.scrollTop());
 			});
 
 			$("main").scroll(function () {
 			  var $w = $("main");
 			  $('.position-fixed-y').css('left', $w.scrollLeft());
+			  $('.position-fixed-x').css('top', $w.scrollTop());
 			});
 
 		});
@@ -164,15 +170,20 @@ jQuery(document).ready(function($){
 			});
 
 			$('.position-fixed-x').css('left', 0);
+			$('.position-fixed-x').css('top', 0);
+			$('.position-fixed-y').css('left', 0);
 			$('.position-fixed-y').css('top', 0);
-			$('.position-fixed-y').css('background-color', 'black');
-			$('.position-fixed-y').css('color', 'white');
+			$('.position-fixed-y').children('ul').children('li').css('background-color', '#343a40');
+			$('.position-fixed-y').children('ul').children('li').css('color', 'white');
+			$('.position-fixed-x').css('background-color', 'transparent');
+			$('.position-fixed-x').css('color', 'black');
 
 			//create scrolling for mobile
 			$(window).scroll(function () {
 			  var $w = $(window);
 			  $('.position-fixed-x').css('left', 0);
 			  $('.position-fixed-y').css('top', 0);
+			  $('.position-fixed-x').css('top', $w.scrollLeft());
 			  $('.position-fixed-y').css('top', $w.scrollTop());
 			});
 
@@ -181,7 +192,7 @@ jQuery(document).ready(function($){
 			  $('.position-fixed-x').css('left', 0);
 			  $('.position-fixed-y').css('top', 0);
 			  $('.position-fixed-x').css('left', $w.scrollLeft());
-
+			  $('.position-fixed-y').css('left', $w.scrollTop());
 			});
 
 		});

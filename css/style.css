@@ -63,17 +63,15 @@ Main Components
 }
 
 .cd-schedule .timeline {
-    display: block;
+    display: inline-block;
     position: relative;
     top: 0;
     left: 0px;
     height: 100%;
-    width: 100%;
+    min-width: 100%;
+    right:-99em;
     float: left;
     padding-top: 20px;
-    background-color: black;
-    color: white;
-    z-index: 2;
 }
 
 
@@ -101,6 +99,9 @@ Main Components
   width: 70%;
   max-width: 200px;
   font-weight: bold;
+  background-color: #343a40;
+  color: white;
+  z-index: 2;
 }
 
 .cd-schedule .timeline li::after {
@@ -198,6 +199,7 @@ Main Components
   padding: 0 5%; 
   padding-bottom: 0px;
   margin-top: 10px;
+  z-index: 4;
 }
 
 .cd-schedule .events .top-info > span {
