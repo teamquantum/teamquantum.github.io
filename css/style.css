@@ -71,6 +71,9 @@ Main Components
     width: 100%;
     float: left;
     padding-top: 20px;
+    background-color: black;
+    color: white;
+    z-index: 2;
 }
 
 

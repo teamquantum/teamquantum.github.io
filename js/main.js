@@ -33,13 +33,6 @@ jQuery(document).ready(function($){
 
 		this.initSchedule();
 
-		$("main").scroll(function () {
-		  var $w = $("main");
-		  $('.position-fixed-x').css('left', $w.scrollLeft());
-		  $('.position-fixed-y').css('top', $w.scrollTop());
-
-		});
-
 	}
 
 	SchedulePlan.prototype.initSchedule = function() {
@@ -106,6 +99,7 @@ jQuery(document).ready(function($){
 			});
 		});
 
+
 		//close modal window
 		this.modal.on('click', '.close', function(event){
 			event.preventDefault();
@@ -130,6 +124,23 @@ jQuery(document).ready(function($){
 				top: (eventTop - 8) +'px',
 				height: (eventHeight+1)+'px'
 			});
+
+			$('.position-fixed-x').css('left', 0);
+			$('.position-fixed-y').css('top', 0);
+			$('.position-fixed-y').css('background-color', 'transparent');
+			$('.position-fixed-y').css('color', 'black');
+
+			//create scrolling for desktop
+			$(window).scroll(function () {
+			  var $w = $(window);
+			  $('.position-fixed-x').css('top', $w.scrollTop());
+			});
+
+			$("main").scroll(function () {
+			  var $w = $("main");
+			  $('.position-fixed-y').css('left', $w.scrollLeft());
+			});
+
 		});
 
 		this.element.removeClass('loading');
@@ -151,6 +162,28 @@ jQuery(document).ready(function($){
 				width: (eventWidth+1)+'px',
                                 height: 70+'px'
 			});
+
+			$('.position-fixed-x').css('left', 0);
+			$('.position-fixed-y').css('top', 0);
+			$('.position-fixed-y').css('background-color', 'black');
+			$('.position-fixed-y').css('color', 'white');
+
+			//create scrolling for mobile
+			$(window).scroll(function () {
+			  var $w = $(window);
+			  $('.position-fixed-x').css('left', 0);
+			  $('.position-fixed-y').css('top', 0);
+			  $('.position-fixed-y').css('top', $w.scrollTop());
+			});
+
+			$("main").scroll(function () {
+			  var $w = $("main");
+			  $('.position-fixed-x').css('left', 0);
+			  $('.position-fixed-y').css('top', 0);
+			  $('.position-fixed-x').css('left', $w.scrollLeft());
+
+			});
+
 		});
 
 		this.element.removeClass('loading');
