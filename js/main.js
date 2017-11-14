@@ -139,6 +139,7 @@ jQuery(document).ready(function($){
 			  $('.position-fixed-y').css('top', 0);
 			  $('.position-fixed-x').css('top', $w.scrollTop());
 			  $('.position-fixed-x').css('left', 0);
+			  $('.position-fixed-y').css('left', $m.scrollLeft());
 			});
 
 			$("main").scroll(function () {
@@ -147,6 +148,7 @@ jQuery(document).ready(function($){
 			  $('.position-fixed-y').css('top', 0);
 			  $('.position-fixed-x').css('top', $m.scrollTop());
 			  $('.position-fixed-x').css('left', 0);
+			  $('.position-fixed-x').css('top', $w.scrollTop());
 			});
 
 		});
