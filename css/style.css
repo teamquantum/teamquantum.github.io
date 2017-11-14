@@ -23,8 +23,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-overflow-scrolling: touch;
-  height: 100vh;
+  height: 100%;
 }
 
 a {
@@ -530,11 +529,11 @@ Main Components
 
 .cd-schedule .single-event[data-event="event-17"],
 .cd-schedule [data-event="event-17"] .header-bg {
-  background: #ffffb3;
+  background: #003366;
 }
 
 .cd-schedule .single-event[data-event="event-17"]:hover {
-  background: #ffffcc;
+  background: #004080;
 }
 
 .cd-schedule .single-event[data-event="event-18"],
