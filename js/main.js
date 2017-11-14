@@ -135,6 +135,7 @@ jQuery(document).ready(function($){
 			//create scrolling for desktop
 			$(window).scroll(function () {
 			  $w = $(window);
+			  $m = $("main");
 			  $('.position-fixed-y').css('left', $w.scrollLeft());
 			  $('.position-fixed-y').css('top', 0);
 			  $('.position-fixed-x').css('top', $w.scrollTop());
@@ -143,6 +144,7 @@ jQuery(document).ready(function($){
 			});
 
 			$("main").scroll(function () {
+			  $w = $(window);
 			  $m = $("main");
 			  $('.position-fixed-y').css('left', $m.scrollLeft());
 			  $('.position-fixed-y').css('top', 0);
