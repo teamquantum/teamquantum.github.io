@@ -126,9 +126,9 @@ jQuery(document).ready(function($){
 			});
 
 			$('.position-fixed-x').css('left', 0);
-			$('.position-fixed-x').css('top', 0);
-			$('.position-fixed-y').css('left', 0);
 			$('.position-fixed-y').css('top', 0);
+			$('.position-fixed-y').css('left', 0);
+			$('.position-fixed-x').css('top', 0);
 			$('.position-fixed-y').children('ul').children('li').css('background-color', 'transparent');
 			$('.position-fixed-y').children('ul').children('li').css('color', 'black');
 			$('.position-fixed-x').css('background-color', '#343a40');
@@ -137,14 +137,14 @@ jQuery(document).ready(function($){
 			//create scrolling for desktop
 			$(window).scroll(function () {
 			  var $w = $(window);
-			  $('.position-fixed-y').css('left', $w.scrollLeft());
+			  //$('.position-fixed-y').css('left', $w.scrollLeft());
 			  $('.position-fixed-x').css('top', $w.scrollTop());
 			});
 
 			$("main").scroll(function () {
 			  var $w = $("main");
 			  $('.position-fixed-y').css('left', $w.scrollLeft());
-			  $('.position-fixed-x').css('top', $w.scrollTop());
+			  //$('.position-fixed-x').css('top', $w.scrollTop());
 			});
 
 		});
@@ -169,9 +169,9 @@ jQuery(document).ready(function($){
                                 height: 70+'px'
 			});
 
-			$('.position-fixed-x').css('left', 0);
-			$('.position-fixed-x').css('top', 0);
 			$('.position-fixed-y').css('left', 0);
+			$('.position-fixed-x').css('top', 0);
+			$('.position-fixed-x').css('left', 0);
 			$('.position-fixed-y').css('top', 0);
 			$('.position-fixed-y').children('ul').children('li').css('background-color', '#343a40');
 			$('.position-fixed-y').children('ul').children('li').css('color', 'white');
@@ -181,18 +181,15 @@ jQuery(document).ready(function($){
 			//create scrolling for mobile
 			$(window).scroll(function () {
 			  var $w = $(window);
-			  $('.position-fixed-x').css('left', 0);
-			  $('.position-fixed-y').css('top', 0);
-			  $('.position-fixed-x').css('top', $w.scrollLeft());
+			  //$('.position-fixed-x').css('left', $w.scrollLeft());
 			  $('.position-fixed-y').css('top', $w.scrollTop());
 			});
 
 			$("main").scroll(function () {
 			  var $w = $("main");
-			  $('.position-fixed-x').css('left', 0);
-			  $('.position-fixed-y').css('top', 0);
 			  $('.position-fixed-x').css('left', $w.scrollLeft());
-			  $('.position-fixed-y').css('left', $w.scrollTop());
+			  //alert($('.position-fixed-x').position().left);
+			  //$('.position-fixed-y').css('top', $w.scrollTop());
 			});
 
 		});
