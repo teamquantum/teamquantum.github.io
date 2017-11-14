@@ -125,26 +125,28 @@ jQuery(document).ready(function($){
 				height: (eventHeight+1)+'px'
 			});
 
-			$('.position-fixed-x').css('left', 0);
-			$('.position-fixed-y').css('top', 0);
-			$('.position-fixed-y').css('left', 0);
-			$('.position-fixed-x').css('top', 0);
 			$('.position-fixed-y').children('ul').children('li').css('background-color', 'transparent');
 			$('.position-fixed-y').children('ul').children('li').css('color', 'black');
 			$('.position-fixed-x').css('background-color', '#343a40');
 			$('.position-fixed-x').css('color', 'white');
+			var $w = null;
+			var $w = null;
 
 			//create scrolling for desktop
 			$(window).scroll(function () {
-			  var $w = $(window);
-			  //$('.position-fixed-y').css('left', $w.scrollLeft());
+			  $w = $(window);
+			  $('.position-fixed-y').css('left', $w.scrollLeft());
+			  $('.position-fixed-y').css('top', 0);
 			  $('.position-fixed-x').css('top', $w.scrollTop());
+			  $('.position-fixed-x').css('left', 0);
 			});
 
 			$("main").scroll(function () {
-			  var $w = $("main");
-			  $('.position-fixed-y').css('left', $w.scrollLeft());
-			  //$('.position-fixed-x').css('top', $w.scrollTop());
+			  $m = $("main");
+			  $('.position-fixed-y').css('left', $m.scrollLeft());
+			  $('.position-fixed-y').css('top', 0);
+			  $('.position-fixed-x').css('top', $m.scrollTop());
+			  $('.position-fixed-x').css('left', 0);
 			});
 
 		});
@@ -169,27 +171,32 @@ jQuery(document).ready(function($){
                                 height: 70+'px'
 			});
 
-			$('.position-fixed-y').css('left', 0);
-			$('.position-fixed-x').css('top', 0);
-			$('.position-fixed-x').css('left', 0);
-			$('.position-fixed-y').css('top', 0);
 			$('.position-fixed-y').children('ul').children('li').css('background-color', '#343a40');
 			$('.position-fixed-y').children('ul').children('li').css('color', 'white');
 			$('.position-fixed-x').css('background-color', 'transparent');
 			$('.position-fixed-x').css('color', 'black');
+			var $w = null;
+			var $w = null;
 
 			//create scrolling for mobile
 			$(window).scroll(function () {
-			  var $w = $(window);
-			  //$('.position-fixed-x').css('left', $w.scrollLeft());
+			  $w = $(window);
+			  $m = $("main");
+			  $('.position-fixed-x').css('left', $w.scrollLeft());
+			  $('.position-fixed-x').css('top', 0);
 			  $('.position-fixed-y').css('top', $w.scrollTop());
+			  $('.position-fixed-y').css('left', 0);
+			  $('.position-fixed-x').css('left', $m.scrollLeft());
 			});
 
 			$("main").scroll(function () {
-			  var $w = $("main");
-			  $('.position-fixed-x').css('left', $w.scrollLeft());
-			  //alert($('.position-fixed-x').position().left);
-			  //$('.position-fixed-y').css('top', $w.scrollTop());
+			  $w = $(window);
+			  $m = $("main");
+			  $('.position-fixed-x').css('left', $m.scrollLeft());
+			  $('.position-fixed-x').css('top', 0);
+			  $('.position-fixed-y').css('top', $m.scrollTop());
+			  $('.position-fixed-y').css('left', 0);
+			  $('.position-fixed-y').css('top', $w.scrollTop());
 			});
 
 		});
