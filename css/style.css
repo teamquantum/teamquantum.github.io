@@ -482,6 +482,24 @@ Main Components
   background: #ace600;
 }
 
+.cd-schedule .single-event[data-event="event-10"],
+.cd-schedule [data-event="event-10"] .header-bg {
+  background: #6600ff;
+}
+
+.cd-schedule .single-event[data-event="event-10"]:hover {
+  background: #751aff;
+}
+
+.cd-schedule .single-event[data-event="event-11"],
+.cd-schedule [data-event="event-11"] .header-bg {
+  background: #669900;
+}
+
+.cd-schedule .single-event[data-event="event-11"]:hover {
+  background: #77b300;
+}
+
 .cd-schedule .single-event[data-event="event-12"],
 .cd-schedule [data-event="event-12"] .header-bg {
   background: #6666ff;
