@@ -175,13 +175,16 @@ jQuery(document).ready(function($){
                                 height: 70+'px'
 			});
 
-			$('.position-fixed-y').children('ul').children('li').css('background-color', '#343a40');
-			$('.position-fixed-y').children('ul').children('li').css('color', 'white');
-			$('.position-fixed-x').css('background-color', 'transparent');
-			$('.position-fixed-x').css('color', 'black');
+			var positionfixedx = $('.position-fixed-x');
+			var positionfixedy = $('.position-fixed-y');
+			positionfixedy.children('ul').children('li').css('background-color', '#343a40');
+			positionfixedy.children('ul').children('li').css('color', 'white');
+			positionfixedx.css('background-color', 'transparent');
+			positionfixedx.css('color', 'black');
 			var $w = null;
 			var $w = null;
 			var waiting = false, endScrollHandle;
+			
 
 			//create scrolling for mobile
 			$(window).scroll(function () {
@@ -195,7 +198,7 @@ jQuery(document).ready(function($){
 			  // clear previous scheduled endScrollHandle
 			  clearTimeout(endScrollHandle);
 			  
-			  scrollwindow($w, $m);
+			  scrollwindow($w, $m, positionfixedx, positionfixedy);
 
 			  setTimeout(function () {
 			    waiting = false;
@@ -204,7 +207,7 @@ jQuery(document).ready(function($){
 			  // schedule an extra execution of scroll() after 200ms
 			  // in case the scrolling stops in next 100ms
 			  endScrollHandle = setTimeout(function () {
-			    scrollwindow($w, $m);
+			    scrollwindow($w, $m, positionfixedx, positionfixedy);
 			  }, 200);
 			  
 			});
@@ -223,7 +226,7 @@ jQuery(document).ready(function($){
 			  // clear previous scheduled endScrollHandle
 			  clearTimeout(endScrollHandle);
 			  
-			  scrollmain($w, $m);
+			  scrollmain($w, $m, positionfixedx, positionfixedy);
 
 			  setTimeout(function () {
 			    waiting = false;
@@ -232,7 +235,7 @@ jQuery(document).ready(function($){
 			  // schedule an extra execution of scroll() after 200ms
 			  // in case the scrolling stops in next 100ms
 			  endScrollHandle = setTimeout(function () {
-			    scrollmain($w, $m);
+			    scrollmain($w, $m, positionfixedx, positionfixedy);
 			  }, 200);
 			});
 
@@ -241,22 +244,22 @@ jQuery(document).ready(function($){
 		this.element.removeClass('loading');
 	};
 
-	var scrollwindow = function (window, main) {
+	var scrollwindow = function (window, main, posx, posy) {
 	  // do the onscroll stuff you want here
-	  $('.position-fixed-x').css('left', window.scrollLeft());
-	  $('.position-fixed-x').css('top', 0);
-	  $('.position-fixed-y').css('top', window.scrollTop());
-	  $('.position-fixed-y').css('left', 0);
-	  $('.position-fixed-x').css('left', main.scrollLeft());
+	  posx.css('left', window.scrollLeft());
+	  posx.css('top', 0);
+	  posy.css('top', window.scrollTop());
+	  posy.css('left', 0);
+	  posx.css('left', main.scrollLeft());
 	};
 
-	var scrollmain = function (window, main) {
+	var scrollmain = function (window, main, posx, posy) {
 	  // do the onscroll stuff you want here
-	  $('.position-fixed-x').css('left', main.scrollLeft());
-	  $('.position-fixed-x').css('top', 0);
-	  $('.position-fixed-y').css('top', main.scrollTop());
-	  $('.position-fixed-y').css('left', 0);
-	  $('.position-fixed-y').css('top', window.scrollTop());
+	  posx.css('left', main.scrollLeft());
+	  posx.css('top', 0);
+	  posy.css('top', main.scrollTop());
+	  posy.css('left', 0);
+	  posy.css('top', window.scrollTop());
 	};
 
 	SchedulePlan.prototype.openModal = function(event) {
