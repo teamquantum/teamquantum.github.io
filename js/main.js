@@ -181,31 +181,82 @@ jQuery(document).ready(function($){
 			$('.position-fixed-x').css('color', 'black');
 			var $w = null;
 			var $w = null;
+			var waiting = false, endScrollHandle;
 
 			//create scrolling for mobile
 			$(window).scroll(function () {
 			  $w = $(window);
 			  $m = $("main");
-			  $('.position-fixed-x').css('left', $w.scrollLeft());
-			  $('.position-fixed-x').css('top', 0);
-			  $('.position-fixed-y').css('top', $w.scrollTop());
-			  $('.position-fixed-y').css('left', 0);
-			  $('.position-fixed-x').css('left', $m.scrollLeft());
+			  if (waiting) {
+			    return;
+			  }
+			  waiting = true;
+
+			  // clear previous scheduled endScrollHandle
+			  clearTimeout(endScrollHandle);
+			  
+			  scrollwindow($w, $m);
+
+			  setTimeout(function () {
+			    waiting = false;
+			  }, 100);
+
+			  // schedule an extra execution of scroll() after 200ms
+			  // in case the scrolling stops in next 100ms
+			  endScrollHandle = setTimeout(function () {
+			    scrollwindow($w, $m);
+			  }, 200);
+			  
 			});
+
+
+			waiting = false, endScrollHandle;
 
 			$("main").scroll(function () {
 			  $w = $(window);
 			  $m = $("main");
-			  $('.position-fixed-x').css('left', $m.scrollLeft());
-			  $('.position-fixed-x').css('top', 0);
-			  $('.position-fixed-y').css('top', $m.scrollTop());
-			  $('.position-fixed-y').css('left', 0);
-			  $('.position-fixed-y').css('top', $w.scrollTop());
+			  if (waiting) {
+			    return;
+			  }
+			  waiting = true;
+
+			  // clear previous scheduled endScrollHandle
+			  clearTimeout(endScrollHandle);
+			  
+			  scrollmain($w, $m);
+
+			  setTimeout(function () {
+			    waiting = false;
+			  }, 100);
+
+			  // schedule an extra execution of scroll() after 200ms
+			  // in case the scrolling stops in next 100ms
+			  endScrollHandle = setTimeout(function () {
+			    scrollmain($w, $m);
+			  }, 200);
 			});
 
 		});
 
 		this.element.removeClass('loading');
+	};
+
+	var scrollwindow = function (window, main) {
+	  // do the onscroll stuff you want here
+	  $('.position-fixed-x').css('left', window.scrollLeft());
+	  $('.position-fixed-x').css('top', 0);
+	  $('.position-fixed-y').css('top', window.scrollTop());
+	  $('.position-fixed-y').css('left', 0);
+	  $('.position-fixed-x').css('left', main.scrollLeft());
+	};
+
+	var scrollmain = function (window, main) {
+	  // do the onscroll stuff you want here
+	  $('.position-fixed-x').css('left', main.scrollLeft());
+	  $('.position-fixed-x').css('top', 0);
+	  $('.position-fixed-y').css('top', main.scrollTop());
+	  $('.position-fixed-y').css('left', 0);
+	  $('.position-fixed-y').css('top', window.scrollTop());
 	};
 
 	SchedulePlan.prototype.openModal = function(event) {
