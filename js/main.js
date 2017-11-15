@@ -181,15 +181,13 @@ jQuery(document).ready(function($){
 			positionfixedy.children('ul').children('li').css('color', 'white');
 			positionfixedx.css('background-color', 'transparent');
 			positionfixedx.css('color', 'black');
-			var $w = null;
-			var $w = null;
+			var $w = $(window);
+			var $m = $("main");
 			var waiting = false, endScrollHandle;
 			
 
 			//create scrolling for mobile
 			$(window).scroll(function () {
-			  $w = $(window);
-			  $m = $("main");
 			  if (waiting) {
 			    return;
 			  }
@@ -216,8 +214,6 @@ jQuery(document).ready(function($){
 			waiting = false, endScrollHandle;
 
 			$("main").scroll(function () {
-			  $w = $(window);
-			  $m = $("main");
 			  if (waiting) {
 			    return;
 			  }
