@@ -92,8 +92,8 @@ jQuery(document).ready(function($){
 		this.animating = true;
 
 		//update event name and time
-		this.modalHeader.find('.event-name').text(event.find('.event-name').text());
-		this.modalHeader.find('.event-date').text(event.find('.event-date').text());
+		this.modalHeader.find('.event-name').text(event.parent().find('.card-title').text());
+		this.modalHeader.find('.event-date').text('');
 		this.modal.attr('data-event', event.parent().attr('data-event'));
 
 		//update event content
